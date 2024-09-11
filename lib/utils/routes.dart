@@ -1,0 +1,1 @@
+const detailProductRoute = '/detail-product';
