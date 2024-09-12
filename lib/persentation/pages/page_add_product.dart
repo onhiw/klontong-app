@@ -60,412 +60,423 @@ class _AddProductPageState extends State<AddProductPage> {
   Widget _buildDetail() {
     return Form(
       key: formKey,
-      child: ListView(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
-        children: [
-          Text(
-            'ID Product',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingProductId,
-              cursorColor: themeColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'ID Product',
+              textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "ID Product",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.number),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Name Product',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingName,
-              cursorColor: themeColor,
-              style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "Name Product",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.text),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'SKU',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingSku,
-              cursorColor: themeColor,
-              style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "SKU",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.text),
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Weight',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: textColor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                      controller: textEditingWeight,
-                      cursorColor: themeColor,
-                      style: GoogleFonts.poppins(
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                      decoration: inputDecoration(
-                        "Weight",
-                      ),
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return "Tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                      keyboardType: TextInputType.number),
-                ],
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Length',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: textColor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                      controller: textEditingLength,
-                      cursorColor: themeColor,
-                      style: GoogleFonts.poppins(
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                      decoration: inputDecoration(
-                        "Length",
-                      ),
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return "Tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                      keyboardType: TextInputType.number),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Width',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: textColor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                      controller: textEditingWidth,
-                      cursorColor: themeColor,
-                      style: GoogleFonts.poppins(
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                      decoration: inputDecoration(
-                        "Width",
-                      ),
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return "Tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                      keyboardType: TextInputType.number),
-                ],
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Height',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: textColor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                      controller: textEditingHeight,
-                      cursorColor: themeColor,
-                      style: GoogleFonts.poppins(
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                      decoration: inputDecoration(
-                        "Height",
-                      ),
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return "Tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                      keyboardType: TextInputType.number),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Url Image',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingImage,
-              cursorColor: themeColor,
-              style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "Url Image",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.text),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Price',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingPrice,
-              cursorColor: themeColor,
-              style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "Price",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.number),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Description',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-              controller: textEditingDesc,
-              cursorColor: themeColor,
-              style: GoogleFonts.poppins(
-                color: textColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-              decoration: inputDecoration(
-                "Description",
-              ),
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return "Tidak boleh kosong";
-                } else {
-                  return null;
-                }
-              },
-              keyboardType: TextInputType.text),
-          const SizedBox(
-            height: 24,
-          ),
-          BlocListener<ProductCreateBloc, ProductCreateState>(
-            listener: (context, state) {
-              if (state is ProductCreateSuccess) {
-                Navigator.pop(context, true);
-                flushbarMessage("Success Add Item", themeColor).show(context);
-              }
-
-              if (state is ProductCreateError) {
-                flushbarMessage(state.message, Colors.red).show(context);
-              }
-            },
-            child: BlocBuilder<ProductCreateBloc, ProductCreateState>(
-              builder: (context, state) {
-                return GestureDetector(
-                  onTap: () {
-                    if (validates()) {
-                      Future.microtask(() {
-                        context.read<ProductCreateBloc>().add(PostProduct(
-                            productId: int.parse(textEditingProductId.text),
-                            categoryId: 1,
-                            categoryName: "Cemilan",
-                            sku: textEditingSku.text,
-                            name: textEditingName.text,
-                            description: textEditingDesc.text,
-                            weight: int.parse(textEditingWeight.text),
-                            width: int.parse(textEditingWidth.text),
-                            length: int.parse(textEditingLength.text),
-                            height: int.parse(textEditingHeight.text),
-                            image: textEditingImage.text,
-                            price: int.parse(textEditingPrice.text)));
-                      });
-                    }
-                  },
-                  child: Container(
-                    height: 55,
-                    decoration: BoxDecoration(
-                        color: themeColor,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Center(
-                      child: (state is ProductCreateLoading)
-                          ? const ButtonLoadingWidget(color: Colors.white)
-                          : Text(
-                              "Submit",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                    ),
-                  ),
-                );
-              },
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
             ),
-          )
-        ],
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingProductId,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "ID Product",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.number),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              'Name Product',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingName,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "Name Product",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.text),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              'SKU',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingSku,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "SKU",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.text),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Weight',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: textColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextFormField(
+                          controller: textEditingWeight,
+                          cursorColor: themeColor,
+                          style: GoogleFonts.poppins(
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                          decoration: inputDecoration(
+                            "Weight",
+                          ),
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "Tidak boleh kosong";
+                            } else {
+                              return null;
+                            }
+                          },
+                          keyboardType: TextInputType.number),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Length',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: textColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextFormField(
+                          controller: textEditingLength,
+                          cursorColor: themeColor,
+                          style: GoogleFonts.poppins(
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                          decoration: inputDecoration(
+                            "Length",
+                          ),
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "Tidak boleh kosong";
+                            } else {
+                              return null;
+                            }
+                          },
+                          keyboardType: TextInputType.number),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Width',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: textColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextFormField(
+                          controller: textEditingWidth,
+                          cursorColor: themeColor,
+                          style: GoogleFonts.poppins(
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                          decoration: inputDecoration(
+                            "Width",
+                          ),
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "Tidak boleh kosong";
+                            } else {
+                              return null;
+                            }
+                          },
+                          keyboardType: TextInputType.number),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Height',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: textColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextFormField(
+                          controller: textEditingHeight,
+                          cursorColor: themeColor,
+                          style: GoogleFonts.poppins(
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                          decoration: inputDecoration(
+                            "Height",
+                          ),
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "Tidak boleh kosong";
+                            } else {
+                              return null;
+                            }
+                          },
+                          keyboardType: TextInputType.number),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              'Url Image',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingImage,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "Url Image",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.text),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              'Price',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingPrice,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "Price",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.number),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              'Description',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            TextFormField(
+                controller: textEditingDesc,
+                cursorColor: themeColor,
+                style: GoogleFonts.poppins(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                decoration: inputDecoration(
+                  "Description",
+                ),
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Tidak boleh kosong";
+                  } else {
+                    return null;
+                  }
+                },
+                keyboardType: TextInputType.text),
+            const SizedBox(
+              height: 24,
+            ),
+            BlocListener<ProductCreateBloc, ProductCreateState>(
+              listener: (context, state) {
+                if (state is ProductCreateSuccess) {
+                  Navigator.pop(context, true);
+                  flushbarMessage("Success Add Item", themeColor).show(context);
+                }
+
+                if (state is ProductCreateError) {
+                  flushbarMessage(state.message, Colors.red).show(context);
+                }
+              },
+              child: BlocBuilder<ProductCreateBloc, ProductCreateState>(
+                builder: (context, state) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (validates()) {
+                        Future.microtask(() {
+                          context.read<ProductCreateBloc>().add(PostProduct(
+                              productId: int.parse(textEditingProductId.text),
+                              categoryId: 1,
+                              categoryName: "Cemilan",
+                              sku: textEditingSku.text,
+                              name: textEditingName.text,
+                              description: textEditingDesc.text,
+                              weight: int.parse(textEditingWeight.text),
+                              width: int.parse(textEditingWidth.text),
+                              length: int.parse(textEditingLength.text),
+                              height: int.parse(textEditingHeight.text),
+                              image: textEditingImage.text,
+                              price: int.parse(textEditingPrice.text)));
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                          color: themeColor,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                        child: (state is ProductCreateLoading)
+                            ? const ButtonLoadingWidget(color: Colors.white)
+                            : Text(
+                                "Submit",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

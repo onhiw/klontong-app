@@ -93,106 +93,110 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildList() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: product.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DetailProductPage(id: product[index].id);
-            }));
-          },
-          child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        product[index].image ?? "",
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      )),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Expanded(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product[index].name ?? "",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        product[index].description ?? "",
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey[400]),
-                      ),
-                    ],
-                  )),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return EditProductPage(id: product[index].id);
-                        })).then((value) => value ? _fetchAllProduct() : null);
-                      },
-                      icon: const Icon(Icons.edit)),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  BlocListener<ProductDeleteBloc, ProductDeleteState>(
-                    listener: (context, state) {
-                      if (state is ProductDeleteSuccess) {
-                        _fetchAllProduct();
+    return product.isEmpty
+        ? const Center(
+            child: Text(
+            "Data Empty",
+            textAlign: TextAlign.center,
+          ))
+        : ListView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: product.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DetailProductPage(id: product[index].id);
+                  }));
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Container(
+                    height: 120,
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              product[index].image ?? "",
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            )),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Expanded(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              product[index].name ?? "",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: textColor),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              product[index].description ?? "",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.grey[400]),
+                            ),
+                          ],
+                        )),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return EditProductPage(id: product[index].id);
+                              })).then(
+                                  (value) => value ? _fetchAllProduct() : null);
+                            },
+                            icon: const Icon(Icons.edit)),
+                        BlocListener<ProductDeleteBloc, ProductDeleteState>(
+                          listener: (context, state) {
+                            if (state is ProductDeleteSuccess) {
+                              _fetchAllProduct();
 
-                        flushbarMessage(state.message, themeColor)
-                            .show(context);
-                      }
+                              flushbarMessage(state.message, themeColor)
+                                  .show(context);
+                            }
 
-                      if (state is ProductDeleteError) {
-                        flushbarMessage(state.message, Colors.red)
-                            .show(context);
-                      }
-                    },
-                    child: IconButton(
-                        onPressed: () {
-                          Future.microtask(() {
-                            context
-                                .read<ProductDeleteBloc>()
-                                .add(DeleteByIdProduct(id: product[index].id));
-                          });
-                        },
-                        icon: const Icon(Icons.delete)),
+                            if (state is ProductDeleteError) {
+                              flushbarMessage(state.message, Colors.red)
+                                  .show(context);
+                            }
+                          },
+                          child: IconButton(
+                              onPressed: () {
+                                Future.microtask(() {
+                                  context.read<ProductDeleteBloc>().add(
+                                      DeleteByIdProduct(id: product[index].id));
+                                });
+                              },
+                              icon: const Icon(Icons.delete)),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
+                ),
+              );
+            },
+          );
   }
 }

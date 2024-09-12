@@ -4,7 +4,7 @@ import 'package:klontong_app/styles/colors.dart';
 
 InputDecoration inputDecoration(String hint) => InputDecoration(
       filled: true,
-      fillColor: Colors.grey[400],
+      fillColor: Colors.white,
       hintText: hint,
       hintStyle: GoogleFonts.poppins(
         color: Colors.grey,
@@ -17,7 +17,7 @@ InputDecoration inputDecoration(String hint) => InputDecoration(
         fontSize: 12,
       ),
       contentPadding:
-          const EdgeInsets.only(top: 16, bottom: 16, left: 8, right: 8),
+          const EdgeInsets.only(top: 16, bottom: 16, left: 16, right: 16),
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(color: textColor),
         borderRadius: BorderRadius.circular(15.0),
