@@ -14,6 +14,7 @@ import 'package:klontong_app/utils/routes.dart';
 import 'package:klontong_app/utils/utils.dart';
 
 void main() {
+  di.init();
   runApp(const MyApp());
 }
 
