@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:klontong_app/injection.dart' as di;
+import 'package:klontong_app/injection.dart' as di;
+import 'package:klontong_app/persentation/bloc/product-bloc/product_bloc.dart';
+import 'package:klontong_app/persentation/bloc/product-create-bloc/product_create_bloc.dart';
+import 'package:klontong_app/persentation/bloc/product-delete-bloc/product_delete_bloc.dart';
+import 'package:klontong_app/persentation/bloc/product-detail-bloc/product_detail_bloc.dart';
+import 'package:klontong_app/persentation/bloc/product-update-bloc/product_update_bloc.dart';
 import 'package:klontong_app/persentation/pages/page_detail_product.dart';
 import 'package:klontong_app/persentation/pages/page_home.dart';
+import 'package:klontong_app/styles/colors.dart';
 import 'package:klontong_app/utils/routes.dart';
 import 'package:klontong_app/utils/utils.dart';
 
@@ -29,12 +35,28 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: const [],
+      providers: [
+        BlocProvider(
+          create: (_) => di.locator<ProductBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ProductDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ProductCreateBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ProductUpdateBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ProductDeleteBloc>(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Klontong App',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
           useMaterial3: true,
         ),
         navigatorObservers: [routeObserver],
